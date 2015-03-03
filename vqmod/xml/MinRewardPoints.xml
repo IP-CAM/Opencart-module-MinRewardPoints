@@ -1,0 +1,60 @@
+<modification>
+
+	<id>MinRewardPoint 500.</id>
+
+	<version>1.5.4</version>
+
+	<vqmver>2.1.6</vqmver>
+
+	<author>Bogdan-Ioan BRUDIU</author>
+
+
+	
+
+	
+
+
+
+
+
+
+
+	<file name="catalog/controller/checkout/cart.php">
+
+		<operation>
+
+			<search position="before"><![CDATA[if ($this->request->post['reward'] > $points_total) {]]></search>
+
+			<add><![CDATA[if ($this->request->post['reward'] < 500) {
+$this->error['warning'] = sprintf($this->language->get('error_min'), $this->request->post['reward']);
+		}
+]]></add>
+
+		</operation>
+
+
+
+
+
+	</file>
+
+
+<file name="catalog/language/*/checkout/cart.php">
+
+		<operation>
+
+			<search position="before"><![CDATA[$_['error_maximum']]]></search>
+
+			<add><![CDATA[$_['error_min']          = 'Warning: The minimum number of points that can be applied is 500 you have only %s!';]]></add>
+
+		</operation>
+
+
+
+
+
+	</file>
+	
+
+
+</modification>
